@@ -1,46 +1,48 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Ionicons } from '@expo/vector-icons';
+
 import HomeScreen from './screens/HomeScreen';
 import ImcScreen from './screens/ImcScreen';
 import CalculadoraScreen from './screens/CalculadoraScreen';
 
-const Tab = createBottomTabNavigator()
+const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
-      <Tab.navigator initialRouteName='Home'>
-        <Tab.Screen name='Home'
-        component={HomeScreen}
-        options={{
-          title: 'Início',
-          tabBarIcon: ({ color, size }) =>
-          (<Ionicons name='home-outline' color={color} size={size}/>)
-        }} />
-        <Tab.Screen name='Calculadora Simples'
-        component={CalculadoraScreen}
-        options={{
-          title: 'Calculadora',
-          tabBarIcon: ({ color, size }) =>
-          (<Ionicons name='home-outline' color={color} size={size}/>)
-        }} />
-        <Tab.Screen name='Calculadora IMC'
-        component={ImcScreen}
-        options={{
-          title: 'IMC',
-          tabBarIcon: ({ color, size }) =>
-          (<Ionicons name='home-outline' color={color} size={size}/>)
-        }} />
-      </Tab.navigator>
+      <Drawer.Navigator initialRouteName="Home">
+        <Drawer.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: 'Início',
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="home-outline" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="IMC"
+          component={ImcScreen}
+          options={{
+            title: 'IMC',
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="heart-outline" color={color} size={size} />
+            ),
+          }}
+        />
+        <Drawer.Screen
+          name="Calculadora"
+          component={CalculadoraScreen}
+          options={{
+            title: 'Calculadora Simples',
+            drawerIcon: ({ color, size }) => (
+              <Ionicons name="calculator-outline" color={color} size={size} />
+            ),
+          }}
+        />
+      </Drawer.Navigator>
     </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
