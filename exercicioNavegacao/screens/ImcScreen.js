@@ -27,6 +27,7 @@ export default function ImcScreen() {
   };
 
   return (
+    <View style={styles.container}>
     <View style={styles.calculadora}>
       <Text style={styles.titulo}>Calculadora de IMC</Text>
 
@@ -54,10 +55,17 @@ export default function ImcScreen() {
 
       <Text style={styles.resultado}>{resultado}</Text>
     </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+    container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#f0f0f0',
+  },
   calculadora: {
     width: 300,
     padding: 20,
